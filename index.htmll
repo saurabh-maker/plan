@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First 6 Months at BCG - Action Plan</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: #0f172a;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: drift 20s linear infinite;
+        }
+        
+        @keyframes drift {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            padding: 40px;
+        }
+        
+        .hero-content h1 {
+            font-size: 4em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero-content .subtitle {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        .hero-content .tagline {
+            font-size: 1.2em;
+            opacity: 0.85;
+            animation: fadeInUp 1.4s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            font-size: 2em;
+            cursor: pointer;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, -20px); }
+        }
+        
+        .timeline-section {
+            background: #0f172a;
+            padding: 80px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 3em;
+            font-weight: 900;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .timeline {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #667eea, #764ba2, #f59e0b, #10b981);
+        }
+        
+        .timeline-item {
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: auto;
+            text-align: right;
+            padding-right: 60px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+            margin-right: 0;
+            text-align: left;
+            padding-left: 60px;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 60px rgba(102, 126, 234, 0.4);
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .month-label {
+            font-size: 0.9em;
+            color: #a78bfa;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .action-title {
+            font-size: 1.8em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #f1f5f9;
+        }
+        
+        .action-description {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 20px;
+        }
+        
+        .action-items {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .action-items li {
+            padding: 12px 20px;
+            background: rgba(102, 126, 234, 0.1);
+            border-left: 3px solid #667eea;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+        
+        .action-items li:hover {
+            background: rgba(102, 126, 234, 0.2);
+            transform: translateX(10px);
+        }
+        
+        .impact-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #10b981, #059669);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        .demo-section {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            padding: 100px 20px;
+            position: relative;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .demo-card {
+            background: #1e293b;
+            border: 2px solid #334155;
+            border-radius: 20px;
+            padding: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .demo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        .demo-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-10px);
+            border-color: #667eea;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+        
+        .demo-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .demo-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .demo-description {
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+        
+        .demo-output {
+            max-width: 900px;
+            margin: 50px auto 0;
+            background: #0f172a;
+            border: 2px solid #334155;
+            border-radius: 20px;
+            padding: 40px;
+            min-height: 300px;
+            display: none;
+        }
+        
+        .demo-output.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .typing-effect {
+            border-right: 2px solid #667eea;
+            padding-right: 5px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: #667eea; }
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            padding: 80px 20px;
+        }
+        
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .stat-number {
+            font-size: 4em;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5em; }
+            .timeline::before { left: 30px; }
+            .timeline-content { width: calc(100% - 80px); margin-left: 80px !important; text-align: left !important; padding-left: 20px !important; padding-right: 20px !important; }
+            .timeline-dot { left: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>🚀 My First 6 Months at BCG</h1>
+            <div class="subtitle">From Day 1 to AI Revolution</div>
+            <div class="tagline">How I'll Transform Talent Intelligence in 180 Days</div>
+        </div>
+        <div class="scroll-indicator" onclick="document.querySelector('.timeline-section').scrollIntoView({behavior: 'smooth'})">
+            ↓
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+        <h2 class="section-title" style="color: white;">My Impact Goals</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">AI Agents Built</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Users Onboarded</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">70%</div>
+                <div class="stat-label">Time Saved</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">$8M+</div>
+                <div class="stat-label">Value Created</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeline Section -->
+    <div class="timeline-section">
+        <h2 class="section-title">My Action Timeline</h2>
+        
+        <div class="timeline">
+            <!-- Month 1 -->
+            <div class="timeline-item">
+                <div class="timeline-dot">1</div>
+                <div class="timeline-content">
+                    <div class="month-label">Month 1: Day 1-30</div>
+                    <div class="action-title">🎯 Learn & Assess</div>
+                    <div class="action-description">
+                        I'll spend my first month understanding BCG's current talent intelligence process inside-out. Shadow the research team, interview Partners, and document every pain point.
+                    </div>
+                    <ul class="action-items">
+                        <li>Week 1: Meet with Talent Intelligence Director, understand team structure</li>
+                        <li>Week 2: Shadow 10+ research requests from start to finish</li>
+                        <li>Week 3: Interview 20 stakeholders (Partners, HRBPs, Recruiters)</li>
+                        <li>Week 4: Document current state and build business case for AI transformation</li>
+                    </ul>
+                    <span class="impact-badge">🎯 Goal: Deep understanding + Executive buy-in</span>
+                </div>
+            </div>
+
+            <!-- Month 2 -->
+            <div class="timeline-item">
+                <div class="timeline-dot">2</div>
+                <div class="timeline-content">
+                    <div class="month-label">Month 2: Day 31-60</div>
+                    <div class="action-title">🛠️ Build Foundation</div>
+                    <div class="action-description">
+                        Secure budget approval and start building technical infrastructure. Get first AI agent prototype working with real data.
+                    </div>
+                    <ul class="action-items">
+                        <li>Week 5: Present business case to leadership → Secure $500K budget</li>
+                        <li>Week 6: Set up cloud infrastructure, API connections, vector database</li>
+                        <li>Week 7: Build first AI agent prototype (Talent Sourcing)</li>
+                        <li>Week 8: Test with 5 real requests → Prove AI beats manual research</li>
+                    </ul>
+                    <span class="impact-badge">✅ Deliverable: Working MVP + Budget secured</span>
+                </div>
+            </div>
+
+            <!-- Month 3 -->
+            <div class="timeline-item">
+                <div class="timeline-dot">3</div>
+                <div class="timeline-content">
+                    <div class="month-label">Month 3: Day 61-90</div>
+                    <div class="action-title">🚀 Launch Pilot</div>
+                    <div class="action-description">
+                        Deploy first AI agent to 20 pilot users. Show concrete proof that AI delivers insights 10x faster with same quality.
+                    </div>
+                    <ul class="action-items">
+                        <li>Week 9: Add Market Intelligence Agent (2 agents operational)</li>
+                        <li>Week 10: Launch pilot with 20 power users</li>
+                        <li>Week 11: Run 50+ queries, collect feedback and success stories</li>
+                        <li>Week 12: Present results to leadership → Get approval to scale</li>
+                    </ul>
+                    <span class="impact-badge">📊 Metric: 4.5/5 user satisfaction, 10x speed improvement</span>
+                </div>
+            </div>
+
+            <!-- Month 4 -->
+            <div class="timeline-item">
+                <div class="timeline-dot">4</div>
+                <div class="timeline-content">
+                    <div class="month-label">Month 4: Day 91-120</div>
+                    <div class="action-title">📈 Scale to 100 Users</div>
+                    <div class="action-description">
+                        Add 2 more AI agents and build self-service interface. Expand from 20 to 100+ users across TA and HRBP teams.
+                    </div>
+                    <ul class="action-items">
+                        <li>Week 13: Deploy Workforce Analytics + Location Strategy agents (4 total)</li>
+                        <li>Week 14: Build self-service UI for non-technical users</li>
+                        <li>Week 15: Integrate with Workday and ATS systems</li>
+                        <li>Week 16: Train 100+ users through workshops and certifications</li>
+                    </ul>
+                    <span class="impact-badge">🎓 Achievement: 100+ certified AI-powered users</span>
+                </div>
+            </div>
+
+            <!-- Month 5 -->
+            <div class="timeline-item">
+                <div class="timeline-dot">5</div>
+                <div class="timeline-content">
+                    <div class="month-label">Month 5: Day 121-150</div>
+                    <div class="action-title">🌍 Enterprise Rollout</div>
+                    <div class="action-description">
+                        Deploy final 2 AI agents and scale to 500+ users globally. Launch Knowledge Hub with 5+ years of institutional memory.
+                    </div>
+                    <ul class="action-items">
+                        <li>Week 17: Add Sentiment Analysis + Executive Intelligence agents (6 total)</li>
+                        <li>Week 18: Launch Knowledge Hub with historical data + taxonomies</li>
+                        <li>Week 19: Global rollout to all BCG offices worldwide</li>
+                        <li>Week 20: Hit 500+ daily active users processing 1,000+ queries/week</li>
+                    </ul>
+                    <span class="impact-badge">🏆 Milestone: Full 6-agent ecosystem operational</span>
+                </div>
+            </div>
+
+            <!-- Month 6 -->
+            <div class="timeline-item">
+                <div class="timeline-dot">6</div>
+                <div class="timeline-content">
+                    <div class="month-label">Month 6: Day 151-180</div>
+                    <div class="action-title">💼 Client Launch & Thought Leadership</div>
+                    <div class="action-description">
+                        Package our AI system as a consulting product. Close first client deals and establish BCG as industry thought leader.
+                    </div>
+                    <ul class="action-items">
+                        <li>Week 21: Create client offering: "AI-Powered Talent Intelligence as a Service"</li>
+                        <li>Week 22: Pilot with pharma client → Close $1M deal</li>
+                        <li>Week 23: Publish "The State of AI Talent 2026" report → 500+ downloads</li>
+                        <li>Week 24: Present results to BCG Partnership → Get promotion discussion</li>
+                    </ul>
+                    <span class="impact-badge">💰 Revenue: $3M+ in new client contracts</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Demo Section -->
+    <div class="demo-section">
+        <h2 class="section-title">🎮 Try the AI System (Interactive)</h2>
+        <p style="text-align: center; font-size: 1.3em; color: #94a3b8; max-width: 800px; margin: 0 auto;">
+            Click any scenario below to see how the AI agents I'll build will work in real-time
+        </p>
+        
+        <div class="demo-container">
+            <div class="demo-grid">
+                <div class="demo-card" onclick="runDemo('sourcing')">
+                    <div class="demo-icon">🤖</div>
+                    <div class="demo-title">Talent Sourcing Agent</div>
+                    <div class="demo-description">Find 1,000+ healthcare AI professionals in seconds instead of weeks</div>
+                </div>
+                
+                <div class="demo-card" onclick="runDemo('market')">
+                    <div class="demo-icon">📈</div>
+                    <div class="demo-title">Market Intelligence Agent</div>
+                    <div class="demo-description">Track competitor hiring activity and emerging skill trends automatically</div>
+                </div>
+                
+                <div class="demo-card" onclick="runDemo('location')">
+                    <div class="demo-icon">🌍</div>
+                    <div class="demo-title">Location Strategy Agent</div>
+                    <div class="demo-description">Score 200+ cities for optimal talent hub placement instantly</div>
+                </div>
+                
+                <div class="demo-card" onclick="runDemo('sentiment')">
+                    <div class="demo-icon">💬</div>
+                    <div class="demo-title">Sentiment Analysis Agent</div>
+                    <div class="demo-description">Read employer sentiment across Glassdoor, Blind, LinkedIn in real-time</div>
+                </div>
+                
+                <div class="demo-card" onclick="runDemo('workforce')">
+                    <div class="demo-icon">📊</div>
+                    <div class="demo-title">Workforce Analytics Agent</div>
+                    <div class="demo-description">Benchmark BCG's workforce vs market continuously, not annually</div>
+                </div>
+                
+                <div class="demo-card" onclick="runDemo('executive')">
+                    <div class="demo-icon">👔</div>
+                    <div class="demo-title">Executive Intelligence Agent</div>
+                    <div class="demo-description">Map C-suite talent and track leadership movements globally</div>
+                </div>
+            </div>
+            
+            <div id="demo-output" class="demo-output"></div>
+        </div>
+    </div>
+
+    <script>
+        function runDemo(type) {
+            const output = document.getElementById('demo-output');
+            output.classList.add('active');
+            output.innerHTML = '<p style="color: #f59e0b; font-size: 1.3em;">⏳ AI processing your query...</p>';
+            
+            setTimeout(() => {
+                let result = '';
+                
+                switch(type) {
+                    case 'sourcing':
+                        result = `
+                            <p style="color: #10b981; font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">✅ Query completed in 1.4 seconds</p>
+                            <p style="font-size: 1.3em; margin-bottom: 20px;"><strong>Search:</strong> "Find VP-level healthcare AI leaders with 8+ years experience"</p>
+                            <div style="background: #1e293b; padding: 25px; border-radius: 15px; border-left: 5px solid #10b981;">
+                                <p style="font-size: 1.4em; margin-bottom: 15px;"><strong>Found: 847 matching profiles</strong></p>
+                                <ul style="font-size: 1.1em; line-height: 1.8; list-style: none;">
+                                    <li>🎯 156 in Boston (top biotech cluster)</li>
+                                    <li>🎯 203 in San Francisco (AI/ML hub)</li>
+                                    <li>🎯 98 in London (emerging market)</li>
+                                    <li>🎯 67 in Zurich (pharma concentration)</li>
+                                    <li>⚡ <strong>47 flagged as "ready to hire"</strong> (3+ years tenure, active signals)</li>
+                                </ul>
+                                <p style="margin-top: 20px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 10px; font-size: 1.1em;">
+                                    💡 <strong>Traditional method:</strong> 12-15 hours of manual research<br>
+                                    ⚡ <strong>AI method:</strong> 1.4 seconds with deeper insights
+                                </p>
+                            </div>
+                        `;
+                        break;
+                        
+                    case 'market':
+                        result = `
+                            <p style="color: #10b981; font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">✅ Market scan complete in 2.1 seconds</p>
+                            <div style="background: #1e293b; padding: 25px; border-radius: 15px; border-left: 5px solid #3b82f6;">
+                                <p style="font-size: 1.4em; margin-bottom: 20px;"><strong>Competitor Hiring Intelligence:</strong></p>
+                                <div style="margin-bottom: 20px; padding: 15px; background: rgba(239, 68, 68, 0.1); border-radius: 10px;">
+                                    <p style="font-size: 1.2em;"><strong>🚨 McKinsey:</strong> +180% increase in GenAI roles this month</p>
+                                    <p style="margin-top: 10px; color: #cbd5e1;">Posted 34 GenAI engineering roles (vs 12 last month)</p>
+                                </div>
+                                <div style="margin-bottom: 20px; padding: 15px; background: rgba(251, 146, 60, 0.1); border-radius: 10px;">
+                                    <p style="font-size: 1.2em;"><strong>⚠️ Bain:</strong> Aggressive VP hiring in digital transformation</p>
+                                    <p style="margin-top: 10px; color: #cbd5e1;">12 new senior positions opened, targeting cloud/AI leaders</p>
+                                </div>
+                                <div style="padding: 15px; background: rgba(59, 130, 246, 0.1); border-radius: 10px;">
+                                    <p style="font-size: 1.2em;"><strong>📊 Emerging Skill Trend:</strong></p>
+                                    <p style="margin-top: 10px; color: #cbd5e1;">"Responsible AI" now in 60% of governance job descriptions (up from 15% last quarter)</p>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                        
+                    case 'location':
+                        result = `
+                            <p style="color: #10b981; font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">✅ Location analysis complete in 0.8 seconds</p>
+                            <p style="font-size: 1.3em; margin-bottom: 20px;"><strong>Query:</strong> Best cities for 100-person tech hub</p>
+                            <div style="background: #1e293b; padding: 25px; border-radius: 15px;">
+                                <div style="margin-bottom: 25px; padding: 20px; background: rgba(16, 185, 129, 0.1); border-radius: 10px; border-left: 5px solid #10b981;">
+                                    <p style="font-size: 1.5em; margin-bottom: 15px;"><strong>🏆 #1 Recommendation: Denver, CO</strong></p>
+                                    <ul style="font-size: 1.1em; line-height: 1.8; list-style: none;">
+                                        <li>📉 Glassdoor: 3.9 → 3.7 (this month)</li>
+                                        <li>💬 "Overwork" mentions: +40%</li>
+                                        <li>😰 "Career stagnation" themes: +25%</li>
+                                        <li>⚡ <strong>Opportunity window:</strong> 15-20% higher response rate expected</li>
+                                    </ul>
+                                    <p style="margin-top: 15px; padding: 15px; background: rgba(16, 185, 129, 0.1); border-radius: 8px;">
+                                        💡 <strong>Action:</strong> Launch targeted sourcing campaign in their cloud consulting practice NOW
+                                    </p>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                        
+                    case 'workforce':
+                        result = `
+                            <p style="color: #10b981; font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">✅ Workforce benchmark complete in 1.9 seconds</p>
+                            <div style="background: #1e293b; padding: 25px; border-radius: 15px;">
+                                <p style="font-size: 1.4em; margin-bottom: 20px;"><strong>BCG vs Market Benchmark:</strong></p>
+                                <div style="margin-bottom: 20px; padding: 20px; background: rgba(239, 68, 68, 0.1); border-radius: 10px;">
+                                    <p style="font-size: 1.3em; margin-bottom: 15px;"><strong>⚠️ Capability Gaps (Under-Indexed):</strong></p>
+                                    <ul style="font-size: 1.1em; line-height: 1.8; list-style: none;">
+                                        <li>🔴 ML Engineers: 8% (vs 12% market) → <strong>Gap: 170 FTEs</strong></li>
+                                        <li>🔴 Cloud Architects: 6% (vs 10% market) → <strong>Need 40 hires</strong></li>
+                                        <li>🔴 Implementation: 23% (vs 32% market)</li>
+                                    </ul>
+                                </div>
+                                <div style="padding: 20px; background: rgba(16, 185, 129, 0.1); border-radius: 10px;">
+                                    <p style="font-size: 1.3em; margin-bottom: 15px;"><strong>✅ Our Strengths (Over-Indexed):</strong></p>
+                                    <ul style="font-size: 1.1em; line-height: 1.8; list-style: none;">
+                                        <li>🟢 Strategy capabilities: 42% (vs 35% market)</li>
+                                        <li>🟢 Consultant-to-principal ratio: 4.2:1 (strong)</li>
+                                    </ul>
+                                </div>
+                                <p style="margin-top: 20px; padding: 20px; background: rgba(59, 130, 246, 0.1); border-radius: 10px; font-size: 1.1em;">
+                                    💡 <strong>Recommendation:</strong> Hire 40 cloud architects externally + upskill 25 current engineers over 18 months. Expected impact: 30% faster project delivery.
+                                </p>
+                            </div>
+                        `;
+                        break;
+                        
+                    case 'executive':
+                        result = `
+                            <p style="color: #10b981; font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">✅ Executive search complete in 2.7 seconds</p>
+                            <p style="font-size: 1.3em; margin-bottom: 20px;"><strong>Query:</strong> Top CDO candidates (Healthcare + AI background)</p>
+                            <div style="background: #1e293b; padding: 25px; border-radius: 15px;">
+                                <div style="margin-bottom: 25px; padding: 20px; background: rgba(16, 185, 129, 0.1); border-radius: 10px; border-left: 5px solid #10b981;">
+                                    <p style="font-size: 1.4em; margin-bottom: 15px;"><strong>🏆 Top Candidate: Sarah Chen</strong></p>
+                                    <p style="font-size: 1.1em; color: #cbd5e1; margin-bottom: 10px;">CDO, CVS Health</p>
+                                    <ul style="font-size: 1.1em; line-height: 1.8; list-style: none;">
+                                        <li>💼 12 years healthcare tech leadership</li>
+                                        <li>🚀 Led $500M digital transformation</li>
+                                        <li>🤝 2° connection to 3 BCG Partners</li>
+                                        <li>🎤 Keynote speaker at BCG Healthcare Summit 2024</li>
+                                        <li>📱 Active thought leader (180K LinkedIn followers)</li>
+                                    </ul>
+                                </div>
+                                <div style="padding: 20px; background: rgba(59, 130, 246, 0.1); border-radius: 10px; border-left: 5px solid #3b82f6;">
+                                    <p style="font-size: 1.3em; margin-bottom: 15px;"><strong>#2: Michael Rodriguez</strong></p>
+                                    <p style="font-size: 1.1em; color: #cbd5e1; margin-bottom: 10px;">VP Digital Innovation, Pfizer</p>
+                                    <ul style="font-size: 1.1em; line-height: 1.8; list-style: none;">
+                                        <li>🧬 AI/ML in drug discovery (8+ years)</li>
+                                        <li>🏆 Led 3 successful AI product launches</li>
+                                        <li>📊 Strong network in pharma/biotech</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                }
+                
+                output.innerHTML = result;
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
+                                        <li>👥 8,400 available tech profiles</li>
+                                        <li>💰 $110K avg salary (30% below SF)</li>
+                                        <li>📚 Strong university pipeline (CU Boulder, CSU)</li>
+                                        <li>📈 +22% tech workforce growth YoY</li>
+                                        <li>⭐ Quality score: 8.7/10</li>
+                                    </ul>
+                                </div>
+                                <div style="padding: 20px; background: rgba(59, 130, 246, 0.1); border-radius: 10px; border-left: 5px solid #3b82f6;">
+                                    <p style="font-size: 1.3em; margin-bottom: 15px;"><strong>#2: Austin, TX</strong></p>
+                                    <ul style="font-size: 1.1em; line-height: 1.8; list-style: none;">
+                                        <li>👥 12,300 available profiles</li>
+                                        <li>🚀 Growing startup ecosystem</li>
+                                        <li>⚠️ Higher competition but deeper pool</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        `;
+                        break;
+                        
+                    case 'sentiment':
+                        result = `
+                            <p style="color: #10b981; font-size: 1.5em; font-weight: bold; margin-bottom: 20px;">✅ Sentiment analysis complete in 3.2 seconds</p>
+                            <div style="background: #1e293b; padding: 25px; border-radius: 15px;">
+                                <p style="font-size: 1.4em; margin-bottom: 20px;"><strong>Employer Sentiment Tracking:</strong></p>
+                                <div style="margin-bottom: 25px; padding: 20px; background: rgba(239, 68, 68, 0.1); border-radius: 10px; border-left: 5px solid #ef4444;">
+                                    <p style="font-size: 1.3em; margin-bottom: 15px;"><strong>🚨 Accenture: Declining sentiment detected</strong></p>
+                                    <ul style="font-size: 1.1em; line-height: 1.8; list-style: none;">
